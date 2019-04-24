@@ -21,8 +21,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.NormalModuleReplacementPlugin(
-      /^re-notif/, function(data) {
-        const suffix = data.request.substring('re-notif'.length);
+      /^redux-notifs/, function(data) {
+        const suffix = data.request.substring('redux-notifs'.length);
         data.request =  path.resolve(__dirname, '../src/' + suffix);
       }
     )

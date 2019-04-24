@@ -21,6 +21,7 @@
     "no-param-reassign": 0,
     "no-shadow": 0,
     "no-undef": 2,
+    "react/prop-types": 0
   },
     "plugins": [
       "react"

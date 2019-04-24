@@ -1,9 +1,9 @@
-import reducer from './reducer';
-import * as actions from './actions';
-import Notifs from './components/Notifs';
+import { notifsReducer } from './reducer';
+import { sendNotification } from './actions';
+import { NotifsController as Notifs } from './components/Notifs';
 
 export {
   Notifs,
-  actions,
-  reducer
+  sendNotification,
+  notifsReducer,
 };

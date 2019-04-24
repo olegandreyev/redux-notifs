@@ -1,6 +1,6 @@
-import { NOTIF_SEND, NOTIF_DISMISS, NOTIF_CLEAR } from './actions';
+import { NOTIF_SEND, NOTIF_DISMISS } from './actions';
 
-export default function notifs(domain = [], action) {
+export function notifsReducer(domain = [], action) {
   if (!action || !action.type) return domain;
 
   switch (action.type) {
@@ -10,8 +10,6 @@ export default function notifs(domain = [], action) {
       return domain.filter(notif =>
           notif.id !== action.payload
       );
-    case NOTIF_CLEAR:
-      return [];
     default:
       return domain;
   }

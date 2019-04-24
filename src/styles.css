@@ -1,5 +1,5 @@
 .notif-transition-enter {
-  opacity    : 0.01;
+  opacity : 0.01;
   transition : opacity .5s ease-in;
 }
 
@@ -8,7 +8,7 @@
 }
 
 .notif-transition-leave {
-  opacity    : 1;
+  opacity : 1;
   transition : opacity .5s ease-in;
 }
 
@@ -17,16 +17,16 @@
 }
 
 .notif {
-  position      : relative;
-  font          : 1rem normal Helvetica, sans-serif;
-  overflow      : hidden;
+  position : relative;
+  font : 1rem normal Helvetica, sans-serif;
+  overflow : hidden;
   border-radius : 4px;
   margin-bottom : 2px;
-  max-height    : 400px;
-  box-sizing    : border-box;
-  box-shadow    : 0 0 1px 1px rgba(10, 10, 11, .125);
-  padding       : 0.5rem;
-  color         : #fff;
+  max-height : 400px;
+  box-sizing : border-box;
+  box-shadow : 0 0 1px 1px rgba(10, 10, 11, .125);
+  padding : 0.5rem;
+  color : #fff;
 }
 
 .notif--success {
@@ -46,12 +46,13 @@
 }
 
 .notif__container {
-  position  : fixed;
-  top       : 10px;
-  right     : 0;
-  left      : 0;
-  z-index   : 1000;
-  width     : 80%;
+  position : fixed;
+  top : 10px;
+  right : 0;
+  z-index : 1000;
+  width : 80%;
   max-width : 400px;
-  margin    : auto;
+  margin: 0;
+  /*TODO Add ability to move change notifications sticky position*/
+  left: 10px;
 }
