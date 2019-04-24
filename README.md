@@ -4,34 +4,38 @@
 
 Thanks to Redux, the notification objects are maintained within Redux Store's State and are fired by Actions.
 
-## Implementation
+## Configure
 
 ##### 1. Installation
 
-`npm install --save redux-notifs`
+```js
+npm install --save redux-notifs
+```
 or
-`yarn add redux-notifs`
+```js
+yarn add redux-notifs
+```
 
-##### 2. The next thing you need to do is to add the `redux-notifs` `reducer` to Redux.
+##### 2. Add `notifsReducer` to reducers.
 ```js
 import { combineReducers } from 'redux'
-import { reducer as notifsReducer } from 'redux-notifs';
+import { notifsReducer } from 'redux-notifs';
 
 combineReducers({
   notifs: notifsReducer,
-  // ... more reducers here ...
+  // ... other reducers ...
 })
 ```
 
-##### 3. Add the `Notifs` component at the root of your app
+##### 3. Add `Notifs` on top of project.
 ```js
 import { Provider }  from 'react-redux'
 import { Notifs } from 'redux-notifs';
 
 <Provider store={store}>
   <React.Fragment>
-    // ... other things like router ...
     <Notifs />
+    // ... other things like router ...
   </React.Fragment>
 </Provider>
 ```
@@ -48,7 +52,7 @@ To import the default stylesheet:
 import 'redux-notifs/lib/styles.css';
 ```
 
-## Sending notifications
+## Usage
 
 Thanks to Redux, sending notification is simply done by firing an `Action`:
 
