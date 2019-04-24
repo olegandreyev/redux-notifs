@@ -1,7 +1,7 @@
 # Redux-Notifications Changelog
 
 ### 4.0.2 (April 24 2019)
-- Fork & update to redux-notifs
+- Fork & update to redux-notifs  [#63](https://github.com/zero-t4/redux-notifs/commit/0103d9fbcbcb0a7377148c5c8a072ade43a80c9c) 
 
 ### 4.0.1 (June 27 2017)
 - Fix dependencies & add peerdependencies [#63](https://github.com/indexiatech/re-notif/pull/63)

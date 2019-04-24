@@ -1,6 +1,4 @@
-# `redux-notifications`
-
-> :warning: The previous package `re-notif` has been deprecated on NPM and renamed to `redux-notifications`. A list of changes can be found in the Changelog. Please update your applications accordingly.
+# `redux-notifs`
 
 [React](https://github.com/facebook/react) & [Redux](https://github.com/rackt/redux) based notifications center.
 
@@ -10,14 +8,17 @@ Thanks to Redux, the notification objects are maintained within Redux Store's St
 
 ##### 1. Installation
 
-`npm install --save redux-notifications`
+`npm install --save redux-notifs`
+or
+`yarn add redux-notifs`
 
-##### 2. The next thing you need to do is to add the `redux-notifications` `reducer` to Redux.
+##### 2. The next thing you need to do is to add the `redux-notifs` `reducer` to Redux.
 ```js
-import { createStore, combineReducers } from 'redux'
-import { reducer as notifReducer } from 'redux-notifications';
+import { combineReducers } from 'redux'
+import { reducer as notifsReducer } from 'redux-notifs';
+
 combineReducers({
-  notifs: notifReducer,
+  notifs: notifsReducer,
   // ... more reducers here ...
 })
 ```
@@ -25,18 +26,18 @@ combineReducers({
 ##### 3. Add the `Notifs` component at the root of your app
 ```js
 import { Provider }  from 'react-redux'
-import { Notifs } from 'redux-notifications';
+import { Notifs } from 'redux-notifs';
 
 <Provider store={store}>
-  <div>
+  <React.Fragment>
     // ... other things like router ...
     <Notifs />
-  </div>
+  </React.Fragment>
 </Provider>
 ```
 
 ##### 4. Optionally import default CSS
-`redux-notifications` uses [react-css-transition-group](https://facebook.github.io/react/docs/animation.html#high-level-api-reactcsstransitiongroup) with the following classes:
+`redux-notifs` uses [react-css-transition-group](https://facebook.github.io/react/docs/animation.html#high-level-api-reactcsstransitiongroup) with the following classes:
 - .notif-transition-enter
 - .notif-transition-enter-active
 - .notif-transition-leave
@@ -44,7 +45,7 @@ import { Notifs } from 'redux-notifications';
 
 To import the default stylesheet:
 ```js
-import 'redux-notifications/lib/styles.css';
+import 'redux-notifs/lib/styles.css';
 ```
 
 ## Sending notifications
@@ -52,27 +53,30 @@ import 'redux-notifications/lib/styles.css';
 Thanks to Redux, sending notification is simply done by firing an `Action`:
 
 ``` javascript
-import { reducer as notifReducer, actions as notifActions, Notifs } from 'redux-notifications';
-const { notifSend } = notifActions;
+import { connect } from 'redux-connect';
+import { sendNotification } from 'redux-notifications';
 
 class Demo extends React.Component {
-  send() {
-    this.props.dispatch(notifSend({
+  sendNotification = () => {
+    this.props.dispatch(sendNotification({
       message: 'hello world',
       kind: 'info',
       dismissAfter: 2000
     }));
-  }
+  };
 
   render() {
-    <button onClick={this.send}>Send Notification</button>
+    <button onClick={this.sendNotification}>Send Notification</button>
   }
 }
+
+const DemoController = connect(null, { sendNotification })(Demo);
+
 ```
 
 ## Actions
 
-#### `actions.notifSend({config})`
+#### `actions.sendNotification({config})`
 
 ##### `config.message : node` [required]
 > The notification message, can be one of: `string`, `integer`, `element` or `array` containing these types.
@@ -86,20 +90,9 @@ class Demo extends React.Component {
 ##### `config.dismissAfter : integer` [optional] [default:null]
 > Auto dismiss the notification after the given number of milliseconds.
 
-#### `actions.notifClear()`
-> Clear all current notifications.
-
-#### `actions.notifDismiss(id)`
-> Dismiss a notification by ID
-
 ---
 
 ## Notifs Component
-
-#### `<Notifs CustomComponent={ReactComponent}/>`
-
-##### `CustomComponent : React component`
-> A custom react component can be used instead of the default Notif component
 
 ##### `className : string` [optional] [default:null]
 > Pass a custom classname to the <Notifs /> component.
@@ -122,9 +115,9 @@ class Demo extends React.Component {
 ## Development
 
 ```
-git clone https://github.com/indexiatech/re-notif.git
-cd re-notif
-npm install
-npm run start
+git clone https://github.com/zero-t4/redux-notifs.git
+cd redux-notifs
+yarn
+yarn start
 ```
 Listening on localhost:9000
